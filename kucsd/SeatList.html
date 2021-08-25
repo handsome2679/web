@@ -4,11 +4,52 @@
     <meta charset="utf-8">
     <title></title>
   </head>
+  <style media="screen">
+    .header{
+      text-align: center;
+    }
+    .alltable{
+      border : 1px solid gray;
+      width : 300px;
+      padding : 30px;
+      margin: auto;
+    }
+    #driver, #supporter, #three, #four, #five, #sixth{
+      padding : 20px;
+    }
+  </style>
+
   <body>
-    <table>
-      <tr>
-        <td><input type="button" value="1번"></td>
+    <div class="header">
+      <table class = "alltable">
+        <tr>
+          <td><input type="submit" value="운전자" id = "driver" onclick ="alert('해당 좌석은 선택할 수 없습니다')"></td>
+          <td><input type="submit" value = "조수석" id = "supporter" onclick ='touch()'></td>
+        </tr>
+        <tr id="target-tr1">
       </tr>
-    </table>
+        <tr id="target-tr2">
+          </tr>
+      </table>
+    </div>
+    <script>
+      function touch(){
+        alert('좌석이 선택되었습니다 \n 호출 버튼을 누르는 창으로 이동합니다');
+        window.location.href = "2-3.html";
+      }
+
+      function renderTR(target, idValueArr) {
+        var tr = document.getElementById(target);
+        tr.innerHTML = ''
+        for (var index in idValueArr) {
+          var value = idValueArr[index][0]
+          var id = idValueArr[index][1]
+          tr.innerHTML += '<td><input type="submit" value="' + value + '" id="' + id + '" onclick="touch()"/> </td>';
+        }
+      }
+
+      renderTR("target-tr1", [['3번', 'three'], ['4번', 'four']]);
+      renderTR('target-tr2', [['5번', 'five'], ['6번', 'sixth']]);
+    </script>
   </body>
 </html>
